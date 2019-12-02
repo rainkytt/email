@@ -1,0 +1,10 @@
+---
+# roles/common/tasks/main.yml
+- name: install python
+  apt:
+    name: python
+    state: latest
+- name: install apache2
+  apt:
+    name: apache2
+    state: latest

@@ -1,0 +1,25 @@
+---
+# roles/mysql/tasks/main.yml
+- name: install mysql
+  apt:
+    name: default-mysql-server
+    state: latest
+- name: install python-mysqldb
+  apt:
+    name: python-mysqldb
+    state: latest
+- name: Create a new database with name 'wpdb'
+  mysql_db:
+    name: wpdb
+    state: present
+- name: Create database user 'wpdbuser' with password '12345678' and all database privileges and 'WITH GRANT OPTION'
+  mysql_user:
+    name: wpdbuser
+    password: 12345678
+    priv: '*.*:ALL,GRANT'
+    state: present
+- name: Removes all anonymous user accounts
+  mysql_user:
+    name: ''
+    host_all: yes
+    state: absent

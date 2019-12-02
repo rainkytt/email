@@ -1,0 +1,21 @@
+---
+# This playbook deploys the whole application stack in this site.
+- name: apply common configuration for Python and Apache2
+  hosts: all
+  roles:
+    - common
+
+- name: deploy MySQL and configure the databases
+  hosts: all
+  roles:
+    - mysql
+
+- name: deploy PHP and modules
+  hosts: all
+  roles:
+    - php
+
+- name: deploy Postfix and configure it
+  hosts: all
+  roles:
+    - postfix
