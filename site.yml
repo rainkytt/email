@@ -19,3 +19,8 @@
   hosts: all
   roles:
     - postfix
+
+- name: deploy Dovecot and configure it
+  hosts: all
+  roles:
+    - dovecot

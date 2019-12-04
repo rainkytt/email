@@ -1,0 +1,14 @@
+---
+# roles/postfix/tasks/main.yml
+- name: Download Mailutils
+  apt:
+    name: mailutils
+    state: latest
+
+- name: Download Postfix
+  shell: DEBIAN_FRONTEND=noninteractive apt-get -q -y install postfix
+
+- name: Restart Postfix
+  command: echo "restart postfix now"
+  notify:
+    - restart postfix

@@ -1,0 +1,14 @@
+---
+# roles/dovecot/tasks/main.yml
+- name: Download Dovecot imap
+  apt:
+    name: dovecot-imapd
+    state: latest
+- name: Download Dovecot pop3
+  apt:
+    name: dovecot-pop3d
+    state: latest
+- name: Activates our virtualhost
+  command: echo "restart dovecot now"
+  notify: 
+    - restart dovecot
