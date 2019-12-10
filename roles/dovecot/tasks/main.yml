@@ -5,10 +5,9 @@
     name: dovecot-imapd
     state: latest
 - name: Download Dovecot pop3
-  apt:
-    name: dovecot-pop3d
-    state: latest
+  shell: DEBIAN_FRONTEND=noninteractive apt-get -q -y install dovecot-pop3d
+  ignore_errors: yes
 - name: Activates our virtualhost
   command: echo "restart dovecot now"
-  notify: 
+  notify:
     - restart dovecot

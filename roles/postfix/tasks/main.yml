@@ -7,6 +7,7 @@
 
 - name: Download Postfix
   shell: DEBIAN_FRONTEND=noninteractive apt-get -q -y install postfix
+  ignore_errors: yes
 
 - name: Restart Postfix
   command: echo "restart postfix now"
